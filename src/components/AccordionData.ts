@@ -1,11 +1,20 @@
-export const data = [
+export interface AccordionData {
+    subtitle: string;
+    answer: string;
+    answer2?: string;
+    answer3?: string;
+    answer4?: string;
+    answer5?: string
+}
+
+export const data: AccordionData[] = [
     {
         subtitle: 'Phase I',
         answer: '• Channel, chat and bot ',
-          answer2:  '• Web-App in bot  ',
-          answer3:  '• Game development ',
-          answer4:  '• Small marketing company',
-          answer5:  '• Pre-registration'
+        answer2: '• Web-App in bot  ',
+        answer3: '• Game development ',
+        answer4: '• Small marketing company',
+        answer5: '• Pre-registration'
     },
     {
         subtitle: 'Phase II',
@@ -17,9 +26,9 @@ export const data = [
     {
         subtitle: 'Phase III',
         answer: '• Marketing in Vietnam, China, USA and others',
-        answer2:    '• Adding new mechanics ',
-        answer3:    '• New feed for 1-1.5-2 TON',
-        answer4:    '• Major collaborations with other projects'
+        answer2: '• Adding new mechanics ',
+        answer3: '• New feed for 1-1.5-2 TON',
+        answer4: '• Major collaborations with other projects'
     },
     {
         subtitle: 'Phase IV',

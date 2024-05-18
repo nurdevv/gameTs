@@ -1,15 +1,16 @@
 import {FunctionComponent, useState} from 'react';
 
-import {data} from './AccordionData.ts';
+import {AccordionData, data} from './AccordionData.ts';
 
 const Accordion: FunctionComponent = () => {
     const [isOpen, setIsOpen] = useState(null);
 
-    const toggleOpen = (i: number) => {
+    const toggleOpen = (i: null | number) => {
         if (isOpen === i) {
             return setIsOpen(null)
         }
 
+        // @ts-ignore
         setIsOpen(i)
     }
 
@@ -20,7 +21,7 @@ const Accordion: FunctionComponent = () => {
                     then exchange the poop for TON tokens🐾
                 </div>
                 {
-                    data.map((item, i) => (
+                    data.map((item: AccordionData, i: number | null) => (
                         <div className='item'>
                             <div className="sub-title" onClick={() => toggleOpen(i)}>
                                 <h2>{item.subtitle}</h2>
