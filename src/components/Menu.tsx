@@ -7,6 +7,13 @@ import shop from '../assets/images/shop.svg'
 import wallet from '../assets/images/wallet.svg'
 
 const Menu: FunctionComponent = () => {
+    function refreshPage() {
+        setTimeout(()=>{
+            // @ts-ignore
+            window.location.reload(false);
+        }, 100);
+        console.log('page to reload')
+    }
     return (
         <div className="menu">
             <div className="row">
@@ -36,7 +43,7 @@ const Menu: FunctionComponent = () => {
                 </div>
                 <div className="col-3">
                     <div className="menu-item">
-                        <Link to="/wallet">
+                        <Link to="/wallet" onClick={refreshPage}>
                             <div><img src={wallet} alt="wallet img"/></div>
                             <h3>WALLET</h3>
                         </Link>

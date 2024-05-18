@@ -2,7 +2,7 @@ import {FunctionComponent, useEffect, useMemo, useState} from "react";
 
 import x from '../assets/images/X.svg'
 import deposit from '../assets/images/deposit.svg'
-import withdraw from '../assets/images/withdraw.svg'
+// import withdraw from '../assets/images/withdraw.svg'
 import {ConnectWalletModal} from "../components/ConnectWalletModal.tsx";
 import {
     Box,
@@ -24,15 +24,24 @@ import {tonProofApi} from "../ton-proof-api.ts";
 import {useIsConnectionRestored} from "../hooks/uselsConenctionRestored.ts";
 
 const Wallet: FunctionComponent = () => {
-
+    // const [price, setPrice] = useState(1)
     const {isOpen, onOpen, onClose} = useDisclosure();
     const wallet = useWallet();
     const [sendTransaction, confirmationProgress] = useSendTransaction();
     const isConnectionRestored = useIsConnectionRestored();
     const userFriendlyAddress = wallet ? toUserFriendlyAddress(wallet.account.address, wallet.account.chain === CHAIN.TESTNET) : '';
     const slicedUserFriendlyAddress = userFriendlyAddress.slice(0, 4) + '…' + userFriendlyAddress.slice(-4);
+    const [number, setNumber] = useState(0);
+
 
     const {onCopy, hasCopied} = useClipboard(userFriendlyAddress);
+
+    useEffect(() => {
+        if (wallet?.connectItems?.tonProof && ('error' in wallet.connectItems.tonProof)) {
+            setNumber(+1)
+        }
+    }, []);
+
 
 
     const [walletsList, setWalletsList] = useState<WalletInfo[] | null>(null);
@@ -60,12 +69,15 @@ const Wallet: FunctionComponent = () => {
         })
     }, [])
 
+    console.log(wallet)
+
 
     return (
         <div className="pages-content">
             <h2 className="pages-title">Wallet</h2>
             <div className="pouch">
-                    <span>
+                <div className="balance">{number}</div>
+                <span>
                     <Box as='header' display='flex' justifyContent='flex-end'>
                         {
                             wallet ? <Menu>
@@ -97,7 +109,7 @@ const Wallet: FunctionComponent = () => {
                         <Button onClick={sendTransaction} isLoading={confirmationProgress}>Send transaction</Button>
                     </Center>
                 }</div>
-            <div className="wallet-btn2"><img src={withdraw} alt="withdraw"/></div>
+            {/*<div className="wallet-btn2"><img src={withdraw} alt="withdraw"/></div>*/}
         </div>
     );
 };

@@ -19,15 +19,17 @@ a {
 body {
     position: relative;
     margin: 0 auto;
-    max-width: 400px;
+    max-width: 100%;
     font-family: "Minecraftia", sans-serif !important;
     background: #edc683 !important;
 
 }
 
 .main {
+    display: flex;
+    justify-content: center;
     position: relative;
-    margin: 0 0;
+    margin: 0 auto !important;
     width: 100%;
     min-height: 80vh;
     background: url('./assets/images/hachiback.jpg') top left/100% 100% no-repeat;
