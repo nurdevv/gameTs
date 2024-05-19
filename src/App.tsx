@@ -5,9 +5,7 @@ import Menu from "./components/Menu.tsx"
 import Faq from "./pages/FAQ.tsx"
 import Wallet from "./pages/Wallet.tsx";
 
-
 function App() {
-
 
     return (
         <div className="container">

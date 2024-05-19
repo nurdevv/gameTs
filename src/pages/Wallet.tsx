@@ -68,7 +68,7 @@ const Wallet: FunctionComponent = () => {
         <div className="pages-content">
             <h2 className="pages-title">Wallet</h2>
             <div className="pouch">
-                <div className="balance"></div>
+                <div className="balance">10ton</div>
                 <span>
                     <Box as='header' display='flex' justifyContent='flex-end'>
                         {
